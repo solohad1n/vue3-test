@@ -5,7 +5,7 @@
       <div><strong>Описание:</strong> {{ post.body }}</div>
     </div>
     <div class="post__btn">
-      <button>Удалить</button>
+      <Btn>Удалить</Btn>
     </div>
   </div>
 </template>
@@ -26,5 +26,8 @@ export default {
   padding: 15px;
   border: 3px solid teal;
   margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 </style>

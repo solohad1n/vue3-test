@@ -4,7 +4,7 @@
       <h2>Создать пост:</h2>
       <input v-model="post.title" type="text" placeholder="Название:" />
       <input v-model="post.body" type="text" placeholder="Описание:" />
-      <button @click="createPost">Создать</button>
+      <Btn class="btn-form" @click="createPost">Создать</Btn>
     </form>
   </div>
 </template>
@@ -42,5 +42,12 @@ form {
   max-width: 300px;
   text-align: center;
   margin: auto;
+}
+.btn-form {
+  margin-top: 10px;
+}
+input {
+  padding: 8px;
+  margin-top: 1px;
 }
 </style>
