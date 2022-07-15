@@ -2,8 +2,8 @@
   <div class="form-post">
     <form @submit.prevent>
       <h2>Создать пост:</h2>
-      <input v-model="post.title" type="text" placeholder="Название:" />
-      <input v-model="post.body" type="text" placeholder="Описание:" />
+      <MyInput v-model="post.title" type="text" placeholder="Название:" />
+      <MyInput v-model="post.body" type="text" placeholder="Описание:" />
       <Btn class="btn-form" @click="createPost">Создать</Btn>
     </form>
   </div>
@@ -45,9 +45,5 @@ form {
 }
 .btn-form {
   margin-top: 10px;
-}
-input {
-  padding: 8px;
-  margin-top: 1px;
 }
 </style>
