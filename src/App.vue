@@ -10,7 +10,7 @@
     </my-dialog>
     <PostList
       @remove="removePost"
-      :posts="posts"
+      :posts="selectedSort"
       v-if="!isPostLoading === true"
     />
     <div v-else>Loading...</div>
@@ -33,7 +33,6 @@ export default {
       sortOptions: [
         { value: "title", name: "По Названию" },
         { value: "body", name: "По Описанию" },
-        { value: "id", name: "По ID" },
       ],
     };
   },
@@ -64,6 +63,15 @@ export default {
   },
   mounted() {
     this.fetchPost();
+  },
+  computed: {
+    selectedSort() {
+      return [...this.posts].sort((post1, post2) => {
+        return post1[this.selectedSort]?.localeCompare(
+          post2[this.selectedSort]
+        );
+      });
+    },
   },
 };
 </script>
