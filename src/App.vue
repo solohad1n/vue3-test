@@ -1,5 +1,9 @@
 <template>
-  <PostForm @asd="createPost" />
+  <h1>Страница с постами:</h1>
+  <Btn @click="showDialog">добавить пост:</Btn>
+  <my-dialog v-model:show="dialogVisible">
+    <PostForm @asd="createPost" />
+  </my-dialog>
   <PostList @remove="removePost" :posts="posts" />
 </template>
 
@@ -15,14 +19,19 @@ export default {
         { id: 3, title: "Заголовок 3", body: "Тело нашего поста 3" },
         { id: 4, title: "Заголовок 4", body: "Тело нашего поста 4" },
       ],
+      dialogVisible: false,
     };
   },
   methods: {
     createPost(post) {
       this.posts.push(post);
+      this.dialogVisible = false;
     },
     removePost(post) {
       this.posts = this.posts.filter((p) => p.id !== post.id);
+    },
+    showDialog() {
+      this.dialogVisible = true;
     },
   },
   components: { PostForm, PostList },
