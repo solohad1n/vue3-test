@@ -4,22 +4,25 @@
   <my-dialog v-model:show="dialogVisible">
     <PostForm @asd="createPost" />
   </my-dialog>
-  <PostList @remove="removePost" :posts="posts" />
+  <PostList
+    @remove="removePost"
+    :posts="posts"
+    v-if="!isPostLoading === true"
+  />
+  <div v-else>Loading...</div>
 </template>
 
 <script>
 import PostForm from "./components/PostForm.vue";
 import PostList from "./components/PostList.vue";
+import axios from "axios";
 export default {
+  components: { PostForm, PostList },
   data() {
     return {
-      posts: [
-        { id: 1, title: "Заголовок 1", body: "Тело нашего поста 1" },
-        { id: 2, title: "Заголовок 2", body: "Тело нашего поста 2" },
-        { id: 3, title: "Заголовок 3", body: "Тело нашего поста 3" },
-        { id: 4, title: "Заголовок 4", body: "Тело нашего поста 4" },
-      ],
+      posts: [],
       dialogVisible: false,
+      isPostLoading: false,
     };
   },
   methods: {
@@ -33,8 +36,23 @@ export default {
     showDialog() {
       this.dialogVisible = true;
     },
+    async fetchPost() {
+      try {
+        this.isPostLoading = true;
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/posts?_limit=10"
+        );
+        this.posts = response.data;
+      } catch (e) {
+        alert("Ошибка вывода массива данных!");
+      } finally {
+        this.isPostLoading = false;
+      }
+    },
   },
-  components: { PostForm, PostList },
+  mounted() {
+    this.fetchPost();
+  },
 };
 </script>
 
