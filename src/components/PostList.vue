@@ -1,12 +1,15 @@
 <template>
-  <div>
-    <h3>Список:</h3>
+  <div v-if="posts.length > 0">
+    <h3>Список постов:</h3>
     <PostItem
       v-for="post in posts"
       :key="post.id"
       :post="post"
       @remove="$emit('remove', post)"
     />
+  </div>
+  <div v-else>
+    <h3>Создайте пост!</h3>
   </div>
 </template>
 
