@@ -6,5 +6,5 @@ import MyDialog from '@/components/UI/MyDialog'
 export default [
   Btn,
   MyInput,
-  MyDialog
+  MyDialog,
 ]

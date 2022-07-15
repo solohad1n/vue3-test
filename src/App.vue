@@ -1,28 +1,40 @@
 <template>
-  <h1>Страница с постами:</h1>
-  <Btn @click="showDialog">добавить пост:</Btn>
-  <my-dialog v-model:show="dialogVisible">
-    <PostForm @asd="createPost" />
-  </my-dialog>
-  <PostList
-    @remove="removePost"
-    :posts="posts"
-    v-if="!isPostLoading === true"
-  />
-  <div v-else>Loading...</div>
+  <div class="containet">
+    <h1>Страница с постами:</h1>
+    <div class="app__btn">
+      <Btn @click="showDialog">добавить пост:</Btn>
+      <MySelect v-model="selectedSort" :options="sortOptions" />
+    </div>
+    <my-dialog v-model:show="dialogVisible">
+      <PostForm @asd="createPost" />
+    </my-dialog>
+    <PostList
+      @remove="removePost"
+      :posts="posts"
+      v-if="!isPostLoading === true"
+    />
+    <div v-else>Loading...</div>
+  </div>
 </template>
 
 <script>
 import PostForm from "./components/PostForm.vue";
 import PostList from "./components/PostList.vue";
 import axios from "axios";
+import MySelect from "./components/UI/MySelect.vue";
 export default {
-  components: { PostForm, PostList },
+  components: { PostForm, PostList, MySelect },
   data() {
     return {
       posts: [],
       dialogVisible: false,
       isPostLoading: false,
+      selectedSort: "",
+      sortOptions: [
+        { value: "title", name: "По Названию" },
+        { value: "body", name: "По Описанию" },
+        { value: "id", name: "По ID" },
+      ],
     };
   },
   methods: {
@@ -61,5 +73,17 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.app__btn {
+  display: flex;
+  justify-content: space-around;
+}
+.containet {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+h1 {
+  text-align: center;
+  margin: 0 0 30px 0;
 }
 </style>
