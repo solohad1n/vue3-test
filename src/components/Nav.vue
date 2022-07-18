@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <div>
-      <Btn @click="$router.push('/users')">Перейти в список постов</Btn>
+      <Btn @click="$router.push('/posts')">Cписок постов</Btn>
       <Btn @click="$router.push('/')">Главная страница</Btn>
     </div>
   </div>

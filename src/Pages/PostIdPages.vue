@@ -1,5 +1,5 @@
 <template>
-  <h1>Добро пожаловать!</h1>
+  <h2>Страница поста с ID = {{ $route.params.id }}</h2>
 </template>
 
 <script>
