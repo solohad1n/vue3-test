@@ -18,7 +18,7 @@
       <div v-else>Loading...</div>
     </div>
   </div>
-  <div v-intersection class="observer"></div>
+  <div v-intersection="loadMorePosts" class="observer"></div>
 </template>
 
 <script>

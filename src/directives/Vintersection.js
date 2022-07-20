@@ -1,12 +1,12 @@
 export default {
   mounted(el, binding) {
     const options = {
-      rootMargin: "1px",
-      threshold: 1.0,
-    };
+      rootMargin: '10px',
+      threshold: 1.0
+    }
     const callback = (entries, observer) => {
       if (entries[0].isIntersecting) {
-        binding.value();
+        binding.value()
       }
     };
     const observer = new IntersectionObserver(callback, options);

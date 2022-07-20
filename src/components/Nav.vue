@@ -3,6 +3,7 @@
     <div>
       <Btn @click="$router.push('/posts')">Cписок постов</Btn>
       <Btn @click="$router.push('/')">Главная страница</Btn>
+      <Btn @click="$router.push('/store')">VueX</Btn>
     </div>
   </div>
 </template>
