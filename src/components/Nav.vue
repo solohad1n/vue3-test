@@ -1,9 +1,10 @@
 <template>
   <div class="navbar">
     <div>
-      <Btn @click="$router.push('/posts')">Cписок постов</Btn>
       <Btn @click="$router.push('/')">Главная страница</Btn>
+      <Btn @click="$router.push('/posts')">Cписок постов</Btn>
       <Btn @click="$router.push('/store')">VueX</Btn>
+      <Btn @click="$router.push('/composition')">Composition Api</Btn>
     </div>
   </div>
 </template>
